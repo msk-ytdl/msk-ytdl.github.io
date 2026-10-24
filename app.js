@@ -256,23 +256,23 @@ async function syncLatestRelease() {
 
     if (heroAndroid) {
       heroAndroid.href = `downloads/MSK-YTDL.apk?v=${verParam}`;
-      heroAndroid.setAttribute('download', 'MSK-YTDL.apk');
+      heroAndroid.setAttribute('download', `MSK-YTDL-${tagName}.apk`);
     }
     if (dlApkBtn) {
       dlApkBtn.href = `downloads/MSK-YTDL.apk?v=${verParam}`;
-      dlApkBtn.setAttribute('download', 'MSK-YTDL.apk');
+      dlApkBtn.setAttribute('download', `MSK-YTDL-${tagName}.apk`);
     }
     if (heroWindows) {
       heroWindows.href = `downloads/MSK-YTDL.exe?v=${verParam}`;
-      heroWindows.setAttribute('download', 'MSK-YTDL.exe');
+      heroWindows.setAttribute('download', `MSK-YTDL-${tagName}.exe`);
     }
     if (dlWinBtn) {
       dlWinBtn.href = `downloads/MSK-YTDL.exe?v=${verParam}`;
-      dlWinBtn.setAttribute('download', 'MSK-YTDL.exe');
+      dlWinBtn.setAttribute('download', `MSK-YTDL-${tagName}.exe`);
     }
     if (dlZipBtn) {
       dlZipBtn.href = `downloads/MSK-YTDL-Windows-x64.zip?v=${verParam}`;
-      dlZipBtn.setAttribute('download', 'MSK-YTDL-Windows-x64.zip');
+      dlZipBtn.setAttribute('download', `MSK-YTDL-Windows-x64-${tagName}.zip`);
     }
 
     // Update version badges across page
