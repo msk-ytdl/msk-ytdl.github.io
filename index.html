@@ -61,6 +61,7 @@
       <div class="hero-content">
         <div class="hero-badge-row">
           <span class="badge-pill badge-version">MSK YTDL v1.0.0</span>
+          <span class="live-release-indicator" id="live-release-indicator" style="display: none;"><span class="live-dot"></span> Live Release</span>
           <span class="badge-pill badge-safe">by MSK Software Solutions</span>
           <span class="badge-pill badge-adfree">100% Free • No Ads</span>
         </div>
@@ -81,23 +82,23 @@
 
         <!-- Hero Dual CTA Download Buttons -->
         <div class="hero-actions">
-          <a href="downloads/MSK-YTDL.apk" download="MSK-YTDL.apk" class="btn btn-hero btn-android" id="hero-btn-android">
+          <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest/download/MSK-YTDL.apk" class="btn btn-hero btn-android" id="hero-btn-android">
             <div class="btn-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.551 0 .9993.4478.9993.9993s-.4483 1.0001-.9993 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.5511 0 .9993.4478.9993.9993s-.4482 1.0001-.9993 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4126 13.8533 8.0817 12 8.0817s-3.5902.3309-5.1367.868L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
             </div>
             <div class="btn-text-group">
               <span class="btn-label">Download for Android</span>
-              <span class="btn-meta">Direct APK • v1.0.0 • 29 MB</span>
+              <span class="btn-meta">Direct APK • Latest Release • ~29 MB</span>
             </div>
           </a>
 
-          <a href="downloads/MSK-YTDL.exe" download="MSK-YTDL.exe" class="btn btn-hero btn-windows" id="hero-btn-windows">
+          <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest/download/MSK-YTDL.exe" class="btn btn-hero btn-windows" id="hero-btn-windows">
             <div class="btn-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
             </div>
             <div class="btn-text-group">
               <span class="btn-label">Download for Windows</span>
-              <span class="btn-meta">Direct EXE • 14 MB Standalone</span>
+              <span class="btn-meta">Direct EXE • Latest Release • ~14 MB</span>
             </div>
           </a>
         </div>
@@ -251,16 +252,22 @@
           <ul class="specs-list">
             <li><span class="spec-label">App Name:</span> <span class="spec-val">MSK YTDL</span></li>
             <li><span class="spec-label">Publisher:</span> <span class="spec-val">MSK Software Solutions</span></li>
-            <li><span class="spec-label">Version:</span> <span class="spec-val">v1.0.0</span></li>
-            <li><span class="spec-label">File Size:</span> <span class="spec-val">29.2 MB</span></li>
-            <li><span class="spec-label">OS:</span> <span class="spec-val">Android 5.0+ to 14+</span></li>
+            <li><span class="spec-label">Version:</span> <span class="spec-val badge-version">v1.0.0</span></li>
+            <li><span class="spec-label">File Size:</span> <span class="spec-val" id="spec-apk-size">~29 MB</span></li>
+            <li><span class="spec-label">OS:</span> <span class="spec-val">Android 5.0+ to 15+</span></li>
           </ul>
 
-          <!-- Direct Download Link from Site & GitHub Mirror -->
-          <a href="downloads/MSK-YTDL.apk" download="MSK-YTDL.apk" class="btn btn-download-primary" id="dl-apk-btn">
+          <!-- Direct Download Link from GitHub CDN & Site Mirror -->
+          <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest/download/MSK-YTDL.apk" class="btn btn-download-primary" id="dl-apk-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            <span>Download APK (Direct)</span>
+            <span>Download Latest APK (Direct)</span>
           </a>
+
+          <div class="mirror-links-row">
+            <a href="downloads/MSK-YTDL.apk" download="MSK-YTDL.apk" class="mirror-link">Site Mirror</a>
+            <span>•</span>
+            <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest" target="_blank" rel="noopener" class="mirror-link">GitHub Release CDN</a>
+          </div>
 
           <a href="#installation" class="link-guide">How to install APK on Android →</a>
         </div>
@@ -277,15 +284,25 @@
           <ul class="specs-list">
             <li><span class="spec-label">App Name:</span> <span class="spec-val">MSK YTDL</span></li>
             <li><span class="spec-label">Publisher:</span> <span class="spec-val">MSK Software Solutions</span></li>
-            <li><span class="spec-label">Version:</span> <span class="spec-val">v1.0.0</span></li>
-            <li><span class="spec-label">Package:</span> <span class="spec-val">Standalone EXE (14 MB)</span></li>
+            <li><span class="spec-label">Version:</span> <span class="spec-val badge-version">v1.0.0</span></li>
+            <li><span class="spec-label">Package:</span> <span class="spec-val" id="spec-win-size">Standalone EXE (~14 MB)</span></li>
             <li><span class="spec-label">OS:</span> <span class="spec-val">Windows 10 / 11 (64-bit)</span></li>
           </ul>
 
-          <a href="downloads/MSK-YTDL.exe" download="MSK-YTDL.exe" class="btn btn-download-secondary" id="dl-win-btn">
+          <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest/download/MSK-YTDL.exe" class="btn btn-download-secondary" id="dl-win-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            <span>Download EXE (Direct)</span>
+            <span>Download Latest EXE (Direct)</span>
           </a>
+
+          <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest/download/MSK-YTDL-Windows-x64.zip" class="mirror-link" id="dl-zip-btn" style="display: block; margin-top: 8px; text-align: center; color: #FFB300; font-weight: 500;">
+            🗜️ Download Complete ZIP Package (Bundled FFmpeg)
+          </a>
+
+          <div class="mirror-links-row">
+            <a href="downloads/MSK-YTDL.exe" download="MSK-YTDL.exe" class="mirror-link">Site Mirror</a>
+            <span>•</span>
+            <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest" target="_blank" rel="noopener" class="mirror-link">GitHub Release CDN</a>
+          </div>
 
           <a href="#installation" class="link-guide">How to run on Windows →</a>
         </div>
@@ -381,6 +398,12 @@
             <h4 class="step-title">Share to Download</h4>
             <p class="step-desc">Open the app directly, or in the YouTube app tap <strong>Share &rarr; MSK YTDL</strong> for instant 1-tap download!</p>
           </div>
+
+          <div class="step-card" style="border-color: rgba(255, 179, 0, 0.4); background: rgba(255, 179, 0, 0.05); grid-column: 1 / -1;">
+            <div class="step-num" style="color: #FFB300;">⚡</div>
+            <h4 class="step-title" style="color: #FFB300;">Resolving "App Not Installed"?</h4>
+            <p class="step-desc">If your device says <em>"App not installed as package appears to be invalid"</em> or <em>"Package conflicts with an existing package"</em>: <strong>Uninstall any older test version of MSK YTDL from your phone first</strong>. Android security strictly requires this when updating to our official verified production certificate. After uninstalling, the new APK installs instantly!</p>
+          </div>
         </div>
       </div>
 
@@ -461,6 +484,23 @@
           </button>
           <div class="faq-answer">
             <p>Microsoft Defender SmartScreen displays this alert for newly published or open-source executables that do not have thousands of global downloads yet. The file is digitally signed by <strong>MSK Software Solutions</strong>. To run: Click <strong>"More info"</strong> and then click <strong>"Run anyway"</strong>. You can also run <code>Install_MSK_Certificate.bat</code> included in the portable folder to permanently register MSK Software Solutions as a trusted publisher on your PC.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Why did my Android phone say "App not installed as package appears to be invalid"?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>If you encounter this error on Android, it is almost always caused by one of these reasons:
+            <br><br>
+            <strong>1. An older test build is already installed:</strong> Android security strictly prohibits installing an update if the app was signed with a different private key. If you installed an earlier version of MSK YTDL or VidMate clone, <strong>uninstall the old app from your phone first</strong>, then install the new APK.
+            <br><br>
+            <strong>2. Google Play Protect:</strong> On modern Android (Android 11, 12, 13, 14, 15), Play Protect may prompt you. Tap <strong>"More details"</strong> &rarr; <strong>"Install anyway"</strong>.
+            <br><br>
+            <strong>3. Corrupted or Incomplete Download:</strong> Ensure your download finished completely (29 MB). You can re-download anytime via the direct GitHub Release button.
+            </p>
           </div>
         </div>
 
