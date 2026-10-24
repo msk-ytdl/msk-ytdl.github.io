@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSK VidMate — Fastest YouTube Video & Audio Downloader | Android & Windows</title>
+  <meta name="description" content="Download YouTube videos in 1080p, 720p HD and extract 320kbps MP3 audio with MSK VidMate. Free, open-source, ad-free app for Android and Windows.">
+  <meta name="keywords" content="YouTube Downloader, VidMate Clone, Download YouTube Video, YouTube to MP3, MSK VidMate, Android APK, Windows Downloader">
+  <meta name="theme-color" content="#090b11">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://msk-ytdl.github.io/">
+  <meta property="og:title" content="MSK VidMate — Fastest YouTube Downloader for Android & Windows">
+  <meta property="og:description" content="Download YouTube videos and music in HD with zero ads, smart archive, and one-tap YouTube share integration.">
+  <meta property="og:image" content="https://msk-ytdl.github.io/assets/banner.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" id="brand-logo">
+        <span class="logo-badge">MSK</span>
+        <span class="logo-title">VIDMATE</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#downloads" class="nav-link">Downloads</a>
+        <a href="#installation" class="nav-link">Install Guide</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://github.com/msk-ytdl/msk-ytdl" target="_blank" rel="noopener" class="nav-link github-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </nav>
+
+      <a href="#downloads" class="btn btn-primary nav-cta" id="nav-download-cta">
+        <span>Get App Free</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge-row">
+          <span class="badge-pill badge-version">v1.0.0 Stable</span>
+          <span class="badge-pill badge-safe">100% Free & Open Source</span>
+          <span class="badge-pill badge-adfree">No Ads • No Tracking</span>
+        </div>
+
+        <h1 class="hero-title">
+          The Ultimate <span class="gradient-text">YouTube Video & Audio</span> Downloader
+        </h1>
+
+        <p class="hero-description">
+          Experience blazing fast downloads with modern VidMate aesthetics. Save full <strong>1080p Full HD</strong>, <strong>720p HD</strong> videos, or extract crystal clear <strong>320kbps MP3 / M4A</strong> audio with embedded album art. Designed for Android smartphones and Windows PCs.
+        </p>
+
+        <!-- Dynamic Device Detect Banner -->
+        <div class="device-hint" id="device-hint">
+          <span class="hint-icon">📱</span>
+          <span id="detected-os-text">Detected: Recommended for your device!</span>
+        </div>
+
+        <!-- Hero Dual CTA Download Buttons -->
+        <div class="hero-actions">
+          <a href="downloads/MSK-VidMate.apk" download="MSK-VidMate.apk" class="btn btn-hero btn-android" id="hero-btn-android">
+            <div class="btn-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.551 0 .9993.4478.9993.9993s-.4483 1.0001-.9993 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.5511 0 .9993.4478.9993.9993s-.4482 1.0001-.9993 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4126 13.8533 8.0817 12 8.0817s-3.5902.3309-5.1367.868L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
+            </div>
+            <div class="btn-text-group">
+              <span class="btn-label">Download for Android</span>
+              <span class="btn-meta">Direct APK • v1.0.0 • 29 MB</span>
+            </div>
+          </a>
+
+          <a href="downloads/MSK-VidMate.exe" download="MSK-VidMate.exe" class="btn btn-hero btn-windows" id="hero-btn-windows">
+            <div class="btn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
+            </div>
+            <div class="btn-text-group">
+              <span class="btn-label">Download for Windows</span>
+              <span class="btn-meta">Direct EXE • 14 MB Standalone</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hero-trust-bar">
+          <div class="trust-item">
+            <span class="trust-check">✓</span>
+            <span>Direct YouTube Share support</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check">✓</span>
+            <span>Playlist & Batch Download</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check">✓</span>
+            <span>Full HD 1080p / 60fps</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check">✓</span>
+            <span>Smart Skip Archive</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- App Preview Mockup Card -->
+      <div class="hero-visual">
+        <div class="mockup-frame">
+          <div class="mockup-header">
+            <div class="mockup-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="mockup-title">MSK VIDMATE MOBILE APP</span>
+          </div>
+          
+          <div class="mockup-body">
+            <!-- Simulated App Screen -->
+            <div class="app-screen">
+              <div class="screen-brand">
+                <h3 class="screen-title">MSK VIDMATE</h3>
+                <p class="screen-subtitle">Fast & Free YouTube Video & Audio Downloader</p>
+              </div>
+
+              <div class="screen-card">
+                <span class="card-label">YouTube Video Link</span>
+                <div class="screen-input">
+                  <span class="input-text">https://www.youtube.com/watch?v=...</span>
+                </div>
+                <div class="screen-btn-row">
+                  <div class="mini-btn mini-btn-gold">PASTE LINK</div>
+                  <div class="mini-btn mini-btn-slate">CLEAR</div>
+                </div>
+              </div>
+
+              <div class="screen-card">
+                <span class="card-label">Select Format & Quality</span>
+                <div class="screen-dropdown">
+                  <span>Video (MP4 - Best Available)</span>
+                  <span class="dropdown-arrow">▾</span>
+                </div>
+              </div>
+
+              <div class="screen-card status-card">
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <div class="status-text">
+                  <span class="status-done">Done!</span> Saved to Phone Storage / Download / YouTube
+                </div>
+              </div>
+
+              <div class="screen-action-btn">
+                DOWNLOAD NOW
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Grid -->
+  <section class="features-section" id="features">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">POWERFUL FEATURES</span>
+        <h2 class="section-title">Built with Cutting-Edge Performance</h2>
+        <p class="section-subtitle">Everything you loved about VidMate, modernized with privacy, speed, and zero bloatware.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-gold">🎥</div>
+          <h3 class="feature-title">Ultra HD Video Downloads</h3>
+          <p class="feature-text">Download crystal clear videos in 1080p, 720p HD, or 360p Fast MP4. Progressive streams play instantly in your phone's Gallery without external players.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-cyan">🎵</div>
+          <h3 class="feature-title">HQ Music & MP3 320kbps</h3>
+          <p class="feature-text">Extract studio-quality audio in M4A and MP3. Automatically embeds high-res thumbnail album covers and ID3 metadata tags directly into your music library.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-amber">⚡</div>
+          <h3 class="feature-title">YouTube Share Sheet</h3>
+          <p class="feature-text">No tedious copy-pasting required! Simply tap <strong>Share</strong> inside the YouTube app, pick <strong>MSK VidMate</strong>, and your download starts automatically.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-green">📑</div>
+          <h3 class="feature-title">Playlist & Batch Downloader</h3>
+          <p class="feature-text">Download whole albums, educational tutorials, and playlists with a single click. Save hours of manual downloading with multi-stream acceleration.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">🧠</div>
+          <h3 class="feature-title">Smart Archive (Skip Existing)</h3>
+          <p class="feature-text">Intelligent tracking records downloaded video IDs so resuming or updating large playlists never re-downloads already saved files, saving mobile data.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-red">🛡️</div>
+          <h3 class="feature-title">100% Ad-Free & Private</h3>
+          <p class="feature-text">No annoying popup ads, no notifications spam, no background tracking, and no account sign-in required. Pure, clean, transparent open-source code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads Center Section -->
+  <section class="downloads-section" id="downloads">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">DOWNLOAD CENTER</span>
+        <h2 class="section-title">Get MSK VidMate on Your Device</h2>
+        <p class="section-subtitle">Choose your platform below. Fast, direct downloads powered by GitHub Releases.</p>
+      </div>
+
+      <div class="downloads-grid">
+        <!-- Android Download Card -->
+        <div class="download-card card-primary" id="card-android">
+          <div class="card-badge">RECOMMENDED FOR MOBILE</div>
+          <div class="card-icon android-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.551 0 .9993.4478.9993.9993s-.4483 1.0001-.9993 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.5511 0 .9993.4478.9993.9993s-.4482 1.0001-.9993 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4126 13.8533 8.0817 12 8.0817s-3.5902.3309-5.1367.868L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
+          </div>
+          <h3 class="card-title">Android APK</h3>
+          <p class="card-desc">Install directly on any Android smartphone or tablet. Seamless YouTube Share integration.</p>
+          
+          <ul class="specs-list">
+            <li><span class="spec-label">Version:</span> <span class="spec-val">v1.0.0</span></li>
+            <li><span class="spec-label">File Size:</span> <span class="spec-val">29.2 MB</span></li>
+            <li><span class="spec-label">OS Compatibility:</span> <span class="spec-val">Android 5.0+ (Lollipop to 14+)</span></li>
+            <li><span class="spec-label">Architecture:</span> <span class="spec-val">ARM64 (v8a)</span></li>
+          </ul>
+
+          <!-- Direct Download Link from Site & GitHub Mirror -->
+          <a href="downloads/MSK-VidMate.apk" download="MSK-VidMate.apk" class="btn btn-download-primary" id="dl-apk-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            <span>Download APK (Direct)</span>
+          </a>
+
+          <a href="#install-android" class="link-guide">How to install APK on Android →</a>
+        </div>
+
+        <!-- Windows Download Card -->
+        <div class="download-card" id="card-windows">
+          <div class="card-badge badge-win">DESKTOP</div>
+          <div class="card-icon win-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
+          </div>
+          <h3 class="card-title">Windows Portable</h3>
+          <p class="card-desc">Full standalone package bundled with FFmpeg & FFprobe. Zero installation or dependencies needed.</p>
+          
+          <ul class="specs-list">
+            <li><span class="spec-label">Version:</span> <span class="spec-val">v1.0.0</span></li>
+            <li><span class="spec-label">Package:</span> <span class="spec-val">ZIP (Bundled FFmpeg + EXE)</span></li>
+            <li><span class="spec-label">OS Compatibility:</span> <span class="spec-val">Windows 10 / 11 (64-bit)</span></li>
+            <li><span class="spec-label">Setup:</span> <span class="spec-val">Extract & Run (No install)</span></li>
+          </ul>
+
+          <a href="downloads/MSK-VidMate.exe" download="MSK-VidMate.exe" class="btn btn-download-secondary" id="dl-win-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            <span>Download EXE (Direct)</span>
+          </a>
+
+          <a href="#install-windows" class="link-guide">How to run on Windows →</a>
+        </div>
+      </div>
+
+      <!-- Release Mirrors Callout -->
+      <div class="release-mirrors-box">
+        <div class="mirror-content">
+          <h4>Looking for previous versions or source code?</h4>
+          <p>All builds, source code, and release checksums are publicly audited and hosted on GitHub.</p>
+        </div>
+        <a href="https://github.com/msk-ytdl/msk-ytdl/releases" target="_blank" rel="noopener" class="btn btn-outline">
+          View All GitHub Releases
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Guide Section -->
+  <section class="install-section" id="installation">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">QUICK SETUP</span>
+        <h2 class="section-title">How to Install & Run</h2>
+        <p class="section-subtitle">Simple, easy-to-follow steps to get started in less than 60 seconds.</p>
+      </div>
+
+      <div class="install-tabs">
+        <button class="tab-btn active" data-tab="android-guide">Android (APK)</button>
+        <button class="tab-btn" data-tab="windows-guide">Windows (PC)</button>
+      </div>
+
+      <!-- Android Guide Content -->
+      <div class="guide-content active" id="android-guide">
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h4 class="step-title">Download the APK</h4>
+            <p class="step-desc">Tap the <strong>Download APK</strong> button above to download <code>MSK-VidMate.apk</code> to your Android device.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h4 class="step-title">Allow Unknown Apps</h4>
+            <p class="step-desc">When prompted by Chrome or your File Manager, tap <strong>Settings</strong> and enable <em>"Allow from this source"</em>.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h4 class="step-title">Tap Install</h4>
+            <p class="step-desc">Click <strong>Install</strong>. If Google Play Protect shows a warning, tap <em>"Install anyway"</em> (it is safe and open source).</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h4 class="step-title">Share to Download</h4>
+            <p class="step-desc">Open the app directly, or in the YouTube app tap <strong>Share → MSK VidMate</strong> for instant 1-tap download!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Windows Guide Content -->
+      <div class="guide-content" id="windows-guide">
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h4 class="step-title">Download ZIP</h4>
+            <p class="step-desc">Download <code>MSK-YTDL-Windows-x64.zip</code> from the download center or GitHub Releases.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h4 class="step-title">Extract the ZIP</h4>
+            <p class="step-desc">Right-click the zip file and select <strong>Extract All...</strong> to any folder on your computer.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h4 class="step-title">Launch the App</h4>
+            <p class="step-desc">Double-click <code>MSK-YTDL.exe</code> or <code>Start_MSK_YTDL.bat</code> to launch the interactive terminal or GUI.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h4 class="step-title">SmartScreen Tip</h4>
+            <p class="step-desc">If Windows Defender displays <em>"Windows protected your PC"</em>, click <strong>More info</strong> and select <strong>Run anyway</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">COMMON QUESTIONS</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is MSK VidMate completely free to use?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, MSK VidMate is 100% free and open source forever. There are no subscription fees, no locked features, and no in-app purchases.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Are there any advertisements in the app?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No! Unlike the original VidMate which is overloaded with ads and notifications, MSK VidMate contains <strong>zero ads</strong>, zero trackers, and zero telemetry.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Why does Android warn "File might be harmful"?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Android displays this standard security warning for every APK downloaded outside the Google Play Store. Because Google does not allow YouTube downloaders on the Play Store, you must install the APK directly. The source code is 100% open and verifiable on GitHub.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Where are downloaded videos and songs saved?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>On Android, files are saved to <code>Phone Storage &gt; Download &gt; YouTube</code> and automatically indexed in your device Gallery and Music player. On Windows, files are saved in your chosen download directory.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I download full playlists and YouTube Shorts?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! MSK VidMate fully supports standard videos, YouTube Shorts, live stream recordings, and complete playlists with smart skipping of already-downloaded videos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <span class="logo-badge">MSK</span>
+            <span class="logo-title">VIDMATE</span>
+          </div>
+          <p class="footer-desc">The modern, open-source YouTube downloader for creators, students, and music lovers.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="link-group">
+            <h5>Navigation</h5>
+            <a href="#features">Features</a>
+            <a href="#downloads">Downloads</a>
+            <a href="#installation">Install Guide</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div class="link-group">
+            <h5>Community</h5>
+            <a href="https://github.com/msk-ytdl/msk-ytdl" target="_blank" rel="noopener">GitHub Repository</a>
+            <a href="https://github.com/msk-ytdl/msk-ytdl/issues" target="_blank" rel="noopener">Report Issue</a>
+            <a href="https://github.com/msk-ytdl/msk-ytdl/releases" target="_blank" rel="noopener">Changelog</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 MSK VidMate. Open-source under MIT License.</p>
+        <p class="disclaimer">Disclaimer: MSK VidMate is an independent open-source tool for educational and personal offline backup purposes.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
