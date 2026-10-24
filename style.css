@@ -1,5 +1,6 @@
 /* ===================================================================
-   MSK VidMate — Modern Design System & Stylesheet
+   MSK YTDL — Modern Design System & Stylesheet
+   Publisher: MSK Software Solutions
    Palette: Obsidian Dark (#090B11, #141724) with Vivid Amber Gold (#FFB300)
    =================================================================== */
 
@@ -1097,3 +1098,139 @@ h1, h2, h3, h4, h5 {
     min-width: 100%;
   }
 }
+
+/* ===================================================================
+   Device Security & Safe Installation Warning Styles
+   =================================================================== */
+.security-warning-card {
+  margin-top: 2rem;
+  background: rgba(18, 22, 34, 0.85);
+  border: 1px solid rgba(255, 179, 0, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(255, 179, 0, 0.15);
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  backdrop-filter: blur(16px);
+}
+
+.security-icon-col {
+  flex-shrink: 0;
+}
+
+.shield-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 179, 0, 0.12);
+  border: 1px solid rgba(255, 179, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.security-content-col {
+  flex-grow: 1;
+}
+
+.security-header-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.security-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.safe-tag {
+  background: rgba(0, 230, 118, 0.15);
+  border: 1px solid rgba(0, 230, 118, 0.4);
+  color: #00E676;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.security-desc {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.platform-warning-tips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .security-warning-card {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+  .platform-warning-tips {
+    grid-template-columns: 1fr;
+  }
+}
+
+.warning-tip-box {
+  background: rgba(10, 12, 18, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  transition: var(--transition-normal);
+}
+
+.warning-tip-box:hover {
+  border-color: rgba(255, 179, 0, 0.35);
+  background: rgba(15, 18, 28, 0.85);
+}
+
+.tip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tip-os {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tip-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  background: rgba(255, 82, 82, 0.18);
+  border: 1px solid rgba(255, 82, 82, 0.4);
+  color: #FF5252;
+}
+
+.tip-instruction {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.tip-instruction strong {
+  color: #FFB300;
+}
+

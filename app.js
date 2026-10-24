@@ -1,5 +1,6 @@
 /**
- * MSK VidMate — Interactive UI Script
+ * MSK YTDL — Interactive UI Script
+ * Publisher: MSK Software Solutions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
