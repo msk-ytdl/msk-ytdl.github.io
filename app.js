@@ -217,7 +217,7 @@ async function syncLatestRelease() {
   const defaultZipUrl = `https://github.com/${GITHUB_REPO}/releases/latest/download/MSK-YTDL-Windows-x64.zip`;
 
   try {
-    const response = await fetch(API_URL);
+    const response = await fetch(`${API_URL}?t=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) {
       throw new Error(`GitHub API returned status ${response.status}`);
     }
@@ -237,10 +237,17 @@ async function syncLatestRelease() {
     // Update secondary mirror links to GitHub CDN
     const mirrorApkGithub = document.getElementById('mirror-apk-github');
     const mirrorWinGithub = document.getElementById('mirror-win-github');
-    if (mirrorApkGithub) mirrorApkGithub.href = apkUrl;
-    if (mirrorWinGithub) mirrorWinGithub.href = exeUrl;
+    if (mirrorApkGithub) {
+      mirrorApkGithub.href = apkUrl;
+      mirrorApkGithub.textContent = `⚡ GitHub Official Release CDN (${tagName})`;
+    }
+    if (mirrorWinGithub) {
+      mirrorWinGithub.href = exeUrl;
+      mirrorWinGithub.textContent = `⚡ GitHub Official Release CDN (${tagName})`;
+    }
 
-    // Ensure primary download buttons use fast same-origin direct download (NO external tab, NO 100% hang)
+    // Ensure primary download buttons use fast same-origin direct download with version cache-buster
+    const verParam = encodeURIComponent(tagName);
     const heroAndroid = document.getElementById('hero-btn-android');
     const heroWindows = document.getElementById('hero-btn-windows');
     const dlApkBtn = document.getElementById('dl-apk-btn');
@@ -248,23 +255,23 @@ async function syncLatestRelease() {
     const dlZipBtn = document.getElementById('dl-zip-btn');
 
     if (heroAndroid) {
-      heroAndroid.href = 'downloads/MSK-YTDL.apk';
+      heroAndroid.href = `downloads/MSK-YTDL.apk?v=${verParam}`;
       heroAndroid.setAttribute('download', 'MSK-YTDL.apk');
     }
     if (dlApkBtn) {
-      dlApkBtn.href = 'downloads/MSK-YTDL.apk';
+      dlApkBtn.href = `downloads/MSK-YTDL.apk?v=${verParam}`;
       dlApkBtn.setAttribute('download', 'MSK-YTDL.apk');
     }
     if (heroWindows) {
-      heroWindows.href = 'downloads/MSK-YTDL.exe';
+      heroWindows.href = `downloads/MSK-YTDL.exe?v=${verParam}`;
       heroWindows.setAttribute('download', 'MSK-YTDL.exe');
     }
     if (dlWinBtn) {
-      dlWinBtn.href = 'downloads/MSK-YTDL.exe';
+      dlWinBtn.href = `downloads/MSK-YTDL.exe?v=${verParam}`;
       dlWinBtn.setAttribute('download', 'MSK-YTDL.exe');
     }
     if (dlZipBtn) {
-      dlZipBtn.href = 'downloads/MSK-YTDL-Windows-x64.zip';
+      dlZipBtn.href = `downloads/MSK-YTDL-Windows-x64.zip?v=${verParam}`;
       dlZipBtn.setAttribute('download', 'MSK-YTDL-Windows-x64.zip');
     }
 
