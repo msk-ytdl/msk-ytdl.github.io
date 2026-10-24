@@ -234,18 +234,39 @@ async function syncLatestRelease() {
     const exeUrl = exeAsset ? exeAsset.browser_download_url : defaultExeUrl;
     const zipUrl = zipAsset ? zipAsset.browser_download_url : defaultZipUrl;
 
-    // Update buttons in DOM
+    // Update secondary mirror links to GitHub CDN
+    const mirrorApkGithub = document.getElementById('mirror-apk-github');
+    const mirrorWinGithub = document.getElementById('mirror-win-github');
+    if (mirrorApkGithub) mirrorApkGithub.href = apkUrl;
+    if (mirrorWinGithub) mirrorWinGithub.href = exeUrl;
+
+    // Ensure primary download buttons use fast same-origin direct download (NO external tab, NO 100% hang)
     const heroAndroid = document.getElementById('hero-btn-android');
     const heroWindows = document.getElementById('hero-btn-windows');
     const dlApkBtn = document.getElementById('dl-apk-btn');
     const dlWinBtn = document.getElementById('dl-win-btn');
     const dlZipBtn = document.getElementById('dl-zip-btn');
 
-    if (heroAndroid) heroAndroid.href = apkUrl;
-    if (dlApkBtn) dlApkBtn.href = apkUrl;
-    if (heroWindows) heroWindows.href = exeUrl;
-    if (dlWinBtn) dlWinBtn.href = exeUrl;
-    if (dlZipBtn) dlZipBtn.href = zipUrl;
+    if (heroAndroid) {
+      heroAndroid.href = 'downloads/MSK-YTDL.apk';
+      heroAndroid.setAttribute('download', 'MSK-YTDL.apk');
+    }
+    if (dlApkBtn) {
+      dlApkBtn.href = 'downloads/MSK-YTDL.apk';
+      dlApkBtn.setAttribute('download', 'MSK-YTDL.apk');
+    }
+    if (heroWindows) {
+      heroWindows.href = 'downloads/MSK-YTDL.exe';
+      heroWindows.setAttribute('download', 'MSK-YTDL.exe');
+    }
+    if (dlWinBtn) {
+      dlWinBtn.href = 'downloads/MSK-YTDL.exe';
+      dlWinBtn.setAttribute('download', 'MSK-YTDL.exe');
+    }
+    if (dlZipBtn) {
+      dlZipBtn.href = 'downloads/MSK-YTDL-Windows-x64.zip';
+      dlZipBtn.setAttribute('download', 'MSK-YTDL-Windows-x64.zip');
+    }
 
     // Update version badges across page
     document.querySelectorAll('.badge-version').forEach(badge => {
@@ -275,30 +296,29 @@ async function syncLatestRelease() {
 
     console.log(`[MSK YTDL] Synced latest release assets for ${tagName}`);
   } catch (error) {
-    console.warn('[MSK YTDL] Using permanent GitHub CDN latest release URLs:', error);
+    console.warn('[MSK YTDL] Using permanent direct download URLs:', error);
   }
 }
 
 /**
- * Provide instant toast feedback when user clicks download
- * Especially guides Android users if Chrome prompts "File might be harmful"
+ * Provide instant toast feedback and clean download triggering without opening empty tabs
  */
 function setupDownloadFeedback() {
   const downloadButtons = document.querySelectorAll('#hero-btn-android, #hero-btn-windows, #dl-apk-btn, #dl-win-btn, #dl-zip-btn');
   downloadButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
       const isAndroid = btn.id.includes('android') || btn.id.includes('apk');
       if (isAndroid) {
         showToast(`
           <div>
-            <strong>⚡ Downloading MSK-YTDL.apk...</strong>
-            <div style="font-size: 0.8rem; color: #FFB300; margin-top: 4px;">
-              💡 <strong>Chrome Tip:</strong> When 100% is reached, tap <strong>"Download anyway"</strong> (or pull down notification tray) to finish saving!
+            <strong>⚡ Downloading MSK-YTDL.apk (~26 MB)...</strong>
+            <div style="font-size: 0.8rem; color: #FFB300; margin-top: 5px; line-height: 1.4;">
+              💡 <strong>Chrome Tip:</strong> If asked <em>"File might be harmful?"</em>, tap <strong>"Download anyway"</strong> at the bottom of your screen!
             </div>
           </div>
-        `, 6000);
+        `, 7000);
       } else {
-        showToast(`⚡ Starting download for latest <strong>MSK-YTDL.exe</strong>...`, 4000);
+        showToast(`⚡ Starting direct download for latest <strong>MSK-YTDL.exe</strong>...`, 4000);
       }
     });
   });
