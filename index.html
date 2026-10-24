@@ -80,6 +80,15 @@
           <span id="detected-os-text">Detected: Recommended for your device!</span>
         </div>
 
+        <!-- Android Chrome Download Helper Callout -->
+        <div class="android-download-helper" id="android-chrome-notice" style="display: none;">
+          <div class="helper-badge">📱 ANDROID CHROME DOWNLOAD NOTICE</div>
+          <div class="helper-content">
+            <strong>Download showing 100% or waiting on your phone?</strong>
+            <p>Look at the bottom of your Chrome screen or pull down your phone's notification bar and tap <strong>"Download anyway"</strong> (or <strong>"Keep"</strong>) when asked <em>"File might be harmful?"</em> to finish saving the APK!</p>
+          </div>
+        </div>
+
         <!-- Hero Dual CTA Download Buttons -->
         <div class="hero-actions">
           <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest/download/MSK-YTDL.apk" class="btn btn-hero btn-android" id="hero-btn-android">
@@ -242,7 +251,7 @@
       <div class="downloads-grid">
         <!-- Android Download Card -->
         <div class="download-card card-primary" id="card-android">
-          <div class="card-badge">RECOMMENDED FOR MOBILE</div>
+          <div class="card-badge" id="badge-android-card">RECOMMENDED FOR MOBILE</div>
           <div class="card-icon android-icon">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.551 0 .9993.4478.9993.9993s-.4483 1.0001-.9993 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9993.9993-.9993c.5511 0 .9993.4478.9993.9993s-.4482 1.0001-.9993 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4126 13.8533 8.0817 12 8.0817s-3.5902.3309-5.1367.868L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
           </div>
@@ -264,17 +273,21 @@
           </a>
 
           <div class="mirror-links-row">
-            <a href="downloads/MSK-YTDL.apk" download="MSK-YTDL.apk" class="mirror-link">Site Mirror</a>
+            <a href="downloads/MSK-YTDL.apk" download="MSK-YTDL.apk" class="mirror-link" style="color: #FFB300; font-weight: 600;">⚡ Direct Mirror (If Stalls at 100%)</a>
             <span>•</span>
             <a href="https://github.com/msk-ytdl/msk-ytdl/releases/latest" target="_blank" rel="noopener" class="mirror-link">GitHub Release CDN</a>
           </div>
 
-          <a href="#installation" class="link-guide">How to install APK on Android →</a>
+          <div class="card-inline-tip" id="card-android-tip" style="margin-top: 12px; font-size: 0.8rem; color: #FFB300; background: rgba(255, 179, 0, 0.08); padding: 8px 12px; border-radius: 8px; border: 1px dashed rgba(255, 179, 0, 0.35); display: none;">
+            📱 <strong>Chrome Mobile Tip:</strong> If downloading pauses at 100%, look at the bottom of Chrome or pull down your phone's notification bar and tap <strong>"Download anyway"</strong> to complete!
+          </div>
+
+          <a href="#installation" class="link-guide" style="margin-top: 10px;">How to install APK on Android →</a>
         </div>
 
         <!-- Windows Download Card -->
         <div class="download-card" id="card-windows">
-          <div class="card-badge badge-win">DESKTOP</div>
+          <div class="card-badge badge-win" id="badge-windows-card">DESKTOP</div>
           <div class="card-icon win-icon">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
           </div>

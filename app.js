@@ -4,25 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Device Detection (Android vs Windows)
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  const isAndroid = /android/i.test(userAgent);
-  const isWindows = /windows/i.test(userAgent);
-  const deviceHintText = document.getElementById('detected-os-text');
-  const heroAndroidBtn = document.getElementById('hero-btn-android');
-  const heroWindowsBtn = document.getElementById('hero-btn-windows');
-
-  if (isAndroid) {
-    if (deviceHintText) deviceHintText.innerHTML = '📱 <strong>Android detected!</strong> We recommend downloading the APK below.';
-    if (heroAndroidBtn) heroAndroidBtn.classList.add('glow-pulse');
-    switchTab('android-guide');
-  } else if (isWindows) {
-    if (deviceHintText) deviceHintText.innerHTML = '💻 <strong>Windows PC detected!</strong> Standalone package ready to run.';
-    if (heroWindowsBtn) heroWindowsBtn.classList.add('glow-pulse');
-    switchTab('windows-guide');
-  } else {
-    if (deviceHintText) deviceHintText.innerHTML = '✨ Available for <strong>Android</strong> and <strong>Windows</strong> PCs.';
-  }
+  // 1. Dynamic Device Detection & Recommendation Highlighting
+  applyDeviceHighlighting();
 
   // 2. Tab Switching for Installation Guide
   const tabButtons = document.querySelectorAll('.tab-btn');
@@ -32,25 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       switchTab(targetId);
     });
   });
-
-  function switchTab(tabId) {
-    tabButtons.forEach(b => {
-      if (b.getAttribute('data-tab') === tabId) {
-        b.classList.add('active');
-      } else {
-        b.classList.remove('active');
-      }
-    });
-
-    const guides = document.querySelectorAll('.guide-content');
-    guides.forEach(g => {
-      if (g.id === tabId) {
-        g.classList.add('active');
-      } else {
-        g.classList.remove('active');
-      }
-    });
-  }
 
   // 3. FAQ Accordion Interaction
   const faqItems = document.querySelectorAll('.faq-item');
@@ -91,9 +55,153 @@ document.addEventListener('DOMContentLoaded', () => {
   // Ensures any user clicking download gets the absolute latest release built on GitHub
   syncLatestRelease();
 
-  // 6. User Download Toast Notifications
+  // 6. User Download Toast Notifications & Chrome Guidance
   setupDownloadFeedback();
 });
+
+/**
+ * Tab switching helper
+ */
+function switchTab(tabId) {
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  tabButtons.forEach(b => {
+    if (b.getAttribute('data-tab') === tabId) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+
+  const guides = document.querySelectorAll('.guide-content');
+  guides.forEach(g => {
+    if (g.id === tabId) {
+      g.classList.add('active');
+    } else {
+      g.classList.remove('active');
+    }
+  });
+}
+
+/**
+ * Dynamic Device Highlighting & Smart OS Recommendation
+ * Automatically highlights the exact download button and download card matching the user's OS
+ */
+function applyDeviceHighlighting() {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const isAndroid = /android/i.test(userAgent);
+  const isWindows = /windows/i.test(userAgent);
+
+  const deviceHintText = document.getElementById('detected-os-text');
+  const heroAndroidBtn = document.getElementById('hero-btn-android');
+  const heroWindowsBtn = document.getElementById('hero-btn-windows');
+  const cardAndroid = document.getElementById('card-android');
+  const cardWindows = document.getElementById('card-windows');
+  const badgeAndroid = document.getElementById('badge-android-card');
+  const badgeWindows = document.getElementById('badge-windows-card');
+  const btnAndroidCard = document.getElementById('dl-apk-btn');
+  const btnWindowsCard = document.getElementById('dl-win-btn');
+  const androidNotice = document.getElementById('android-chrome-notice');
+  const androidTip = document.getElementById('card-android-tip');
+
+  if (isWindows) {
+    // --- 1. WINDOWS PC DETECTED ---
+    if (deviceHintText) {
+      deviceHintText.innerHTML = '💻 <strong>Windows PC detected!</strong> Highlighting standalone package recommended for your system.';
+    }
+
+    // Hero Section: Windows button becomes Primary Highlighted
+    if (heroWindowsBtn) {
+      heroWindowsBtn.classList.remove('btn-windows', 'secondary-btn');
+      heroWindowsBtn.classList.add('recommended-btn', 'glow-pulse');
+      const meta = heroWindowsBtn.querySelector('.btn-meta');
+      if (meta) meta.innerHTML = '⭐ <strong>RECOMMENDED FOR THIS PC</strong> • Direct EXE';
+    }
+    if (heroAndroidBtn) {
+      heroAndroidBtn.classList.remove('btn-android', 'recommended-btn', 'glow-pulse');
+      heroAndroidBtn.classList.add('secondary-btn');
+    }
+
+    // Download Cards: Windows card becomes Primary Highlighted
+    if (cardWindows) {
+      cardWindows.classList.remove('card-secondary');
+      cardWindows.classList.add('card-primary', 'card-recommended');
+      if (badgeWindows) {
+        badgeWindows.className = 'card-badge badge-recommended';
+        badgeWindows.textContent = 'RECOMMENDED FOR YOUR PC';
+      }
+      if (btnWindowsCard) {
+        btnWindowsCard.className = 'btn btn-download-primary';
+      }
+    }
+    if (cardAndroid) {
+      cardAndroid.classList.remove('card-primary', 'card-recommended');
+      cardAndroid.classList.add('card-secondary');
+      if (badgeAndroid) {
+        badgeAndroid.className = 'card-badge badge-neutral';
+        badgeAndroid.textContent = 'ANDROID MOBILE';
+      }
+      if (btnAndroidCard) {
+        btnAndroidCard.className = 'btn btn-download-secondary';
+      }
+    }
+
+    switchTab('windows-guide');
+
+  } else if (isAndroid) {
+    // --- 2. ANDROID SMARTPHONE / TABLET DETECTED ---
+    if (deviceHintText) {
+      deviceHintText.innerHTML = '📱 <strong>Android Phone detected!</strong> Highlighting APK recommended for your mobile device.';
+    }
+
+    // Hero Section: Android button becomes Primary Highlighted
+    if (heroAndroidBtn) {
+      heroAndroidBtn.classList.remove('secondary-btn');
+      heroAndroidBtn.classList.add('btn-android', 'recommended-btn', 'glow-pulse');
+      const meta = heroAndroidBtn.querySelector('.btn-meta');
+      if (meta) meta.innerHTML = '⭐ <strong>RECOMMENDED FOR THIS DEVICE</strong> • Direct APK';
+    }
+    if (heroWindowsBtn) {
+      heroWindowsBtn.classList.remove('recommended-btn', 'glow-pulse');
+      heroWindowsBtn.classList.add('btn-windows', 'secondary-btn');
+    }
+
+    // Download Cards: Android card becomes Primary Highlighted
+    if (cardAndroid) {
+      cardAndroid.classList.remove('card-secondary');
+      cardAndroid.classList.add('card-primary', 'card-recommended');
+      if (badgeAndroid) {
+        badgeAndroid.className = 'card-badge badge-recommended';
+        badgeAndroid.textContent = 'RECOMMENDED FOR YOUR PHONE';
+      }
+      if (btnAndroidCard) {
+        btnAndroidCard.className = 'btn btn-download-primary';
+      }
+    }
+    if (cardWindows) {
+      cardWindows.classList.remove('card-primary', 'card-recommended');
+      cardWindows.classList.add('card-secondary');
+      if (badgeWindows) {
+        badgeWindows.className = 'card-badge badge-neutral';
+        badgeWindows.textContent = 'WINDOWS DESKTOP';
+      }
+      if (btnWindowsCard) {
+        btnWindowsCard.className = 'btn btn-download-secondary';
+      }
+    }
+
+    // Show Chrome mobile download tip
+    if (androidNotice) androidNotice.style.display = 'flex';
+    if (androidTip) androidTip.style.display = 'block';
+
+    switchTab('android-guide');
+
+  } else {
+    // Other devices (Linux, macOS, iPhone)
+    if (deviceHintText) {
+      deviceHintText.innerHTML = '✨ Available for <strong>Android</strong> smartphones and <strong>Windows</strong> PCs.';
+    }
+  }
+}
 
 /**
  * Connect to GitHub API to dynamically pull the latest release assets,
@@ -114,7 +222,7 @@ async function syncLatestRelease() {
       throw new Error(`GitHub API returned status ${response.status}`);
     }
     const release = await response.json();
-    const tagName = release.tag_name || 'v1.0.0';
+    const tagName = release.tag_name || 'v1.0.0.2';
     const assets = release.assets || [];
 
     // Locate assets (supporting MSK-YTDL.* and fallback wildcard matching)
@@ -144,20 +252,16 @@ async function syncLatestRelease() {
       badge.textContent = `MSK YTDL ${tagName}`;
     });
 
-    // Update Android file size and meta
+    // Update Android file size
     if (apkAsset && apkAsset.size) {
       const mb = (apkAsset.size / (1024 * 1024)).toFixed(1);
-      const apkMeta = heroAndroid ? heroAndroid.querySelector('.btn-meta') : null;
-      if (apkMeta) apkMeta.textContent = `Direct APK • ${tagName} • ${mb} MB`;
       const specApkSize = document.getElementById('spec-apk-size');
       if (specApkSize) specApkSize.textContent = `${mb} MB`;
     }
 
-    // Update Windows file size and meta
+    // Update Windows file size
     if (exeAsset && exeAsset.size) {
       const mb = (exeAsset.size / (1024 * 1024)).toFixed(1);
-      const winMeta = heroWindows ? heroWindows.querySelector('.btn-meta') : null;
-      if (winMeta) winMeta.textContent = `Direct EXE • ${tagName} • ${mb} MB`;
       const specWinSize = document.getElementById('spec-win-size');
       if (specWinSize) specWinSize.textContent = `Standalone EXE (${mb} MB)`;
     }
@@ -177,14 +281,25 @@ async function syncLatestRelease() {
 
 /**
  * Provide instant toast feedback when user clicks download
+ * Especially guides Android users if Chrome prompts "File might be harmful"
  */
 function setupDownloadFeedback() {
   const downloadButtons = document.querySelectorAll('#hero-btn-android, #hero-btn-windows, #dl-apk-btn, #dl-win-btn, #dl-zip-btn');
   downloadButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
       const isAndroid = btn.id.includes('android') || btn.id.includes('apk');
-      const filename = isAndroid ? 'MSK-YTDL.apk' : 'MSK-YTDL.exe';
-      showToast(`⚡ Starting download for latest <strong>${filename}</strong>...`);
+      if (isAndroid) {
+        showToast(`
+          <div>
+            <strong>⚡ Downloading MSK-YTDL.apk...</strong>
+            <div style="font-size: 0.8rem; color: #FFB300; margin-top: 4px;">
+              💡 <strong>Chrome Tip:</strong> When 100% is reached, tap <strong>"Download anyway"</strong> (or pull down notification tray) to finish saving!
+            </div>
+          </div>
+        `, 6000);
+      } else {
+        showToast(`⚡ Starting download for latest <strong>MSK-YTDL.exe</strong>...`, 4000);
+      }
     });
   });
 }
@@ -192,7 +307,7 @@ function setupDownloadFeedback() {
 /**
  * Toast Notification Helper
  */
-function showToast(messageHtml) {
+function showToast(messageHtml, duration = 4000) {
   let toast = document.getElementById('dl-toast');
   if (!toast) {
     toast = document.createElement('div');
@@ -206,5 +321,5 @@ function showToast(messageHtml) {
 
   setTimeout(() => {
     toast.classList.remove('show');
-  }, 4000);
+  }, duration);
 }

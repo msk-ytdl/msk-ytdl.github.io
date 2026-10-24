@@ -1326,3 +1326,122 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+/* ===================================================================
+   Dynamic Device Recommendation & Highlighting
+   =================================================================== */
+
+/* Primary Highlighted Button */
+.btn-hero.recommended-btn {
+  background: var(--accent-gold-gradient) !important;
+  color: #090B11 !important;
+  box-shadow: 0 10px 35px rgba(255, 179, 0, 0.45) !important;
+  border: 1px solid rgba(255, 179, 0, 0.6) !important;
+  transform: translateY(-2px);
+}
+.btn-hero.recommended-btn .btn-label {
+  color: #090B11 !important;
+  font-weight: 800 !important;
+}
+.btn-hero.recommended-btn .btn-meta {
+  color: #212529 !important;
+  font-weight: 600 !important;
+}
+.btn-hero.recommended-btn svg {
+  fill: #090B11 !important;
+}
+
+/* Secondary Button */
+.btn-hero.secondary-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+}
+.btn-hero.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+.btn-hero.secondary-btn .btn-label {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+.btn-hero.secondary-btn .btn-meta {
+  color: var(--text-secondary) !important;
+}
+.btn-hero.secondary-btn svg {
+  fill: var(--text-secondary) !important;
+}
+
+/* Dynamic Download Cards Highlighting */
+.download-card.card-recommended {
+  border: 2px solid var(--accent-gold) !important;
+  box-shadow: 0 0 40px rgba(255, 179, 0, 0.25), 0 20px 45px rgba(0, 0, 0, 0.7) !important;
+  position: relative;
+  z-index: 2;
+  transform: translateY(-4px);
+}
+
+.download-card.card-secondary {
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: none !important;
+  opacity: 0.92;
+  transform: none !important;
+}
+
+.card-badge.badge-recommended {
+  background: var(--accent-gold-gradient) !important;
+  color: #090B11 !important;
+  box-shadow: 0 4px 15px rgba(255, 179, 0, 0.4) !important;
+  font-weight: 800 !important;
+  border: none !important;
+}
+
+.card-badge.badge-neutral {
+  background: #1c2233 !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+}
+
+/* Android Chrome Download Helper Callout */
+.android-download-helper {
+  background: rgba(255, 179, 0, 0.08);
+  border: 1px solid rgba(255, 179, 0, 0.35);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.helper-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #FFB300;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.helper-content strong {
+  color: #fff;
+  font-size: 0.92rem;
+}
+
+.helper-content p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 2px;
+  line-height: 1.45;
+}
+
+.helper-content em {
+  color: #FFB300;
+  font-style: normal;
+  font-weight: 600;
+}
+
+
