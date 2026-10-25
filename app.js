@@ -222,7 +222,7 @@ async function syncLatestRelease() {
       throw new Error(`GitHub API returned status ${response.status}`);
     }
     const release = await response.json();
-    const tagName = release.tag_name || 'v1.0.1.5';
+    const tagName = release.tag_name || 'v1.0.1.12';
     const assets = release.assets || [];
 
     // Locate assets (supporting MSK-YTDL.* and fallback wildcard matching)
